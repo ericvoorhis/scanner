@@ -6,11 +6,11 @@ import { Component, ViewChild } from '@angular/core';
   styleUrls: ['./scanner.component.css']
 })
 export class ScannerComponent {
-  @ViewChild('scannerBed') scannerBed
+  @ViewChild('scannerBed') scannerBed;
   @ViewChild('scannerOutput') scannerOutput;
 
-  public bedCtx;
-  public outputCtx;
+  private bedCtx: CanvasRenderingContext2D;
+  private outputCtx: CanvasRenderingContext2D;
 
   private bedHeight: number;
   private bedWidth: number;
@@ -19,25 +19,41 @@ export class ScannerComponent {
   private n: number = 0;
 
   private paused: boolean = false;
+  private img: HTMLImageElement;
+
   constructor() { }
 
   updateScanner(): void {
     this.bedCtx.fillStyle = 'rgba(0, 0, 200, 0.3)';
 
-    if (this.paused)
-      return;
+    if (!this.paused) {
+      if (this.n * 10 > this.bedWidth) {
+        this.n = 0;
+      }
 
-    if (this.n * 10 > this.bedWidth) {
-      this.n = 0;
+      this.bedCtx.clearRect(0, 0, this.bedWidth, this.bedHeight);
+
+      if (this.img) {
+        this.bedCtx.drawImage(this.img, 0, 0);
+      }
+
+      this.bedCtx.fillRect(10 * this.n, 0, 10, this.bedHeight);
+      this.n++;
     }
-
-    this.bedCtx.clearRect(0, 0, this.bedWidth, this.bedHeight);
-    this.bedCtx.fillRect(10 * this.n, 0, 10, this.bedHeight);
-    this.n++;
 
     setTimeout(() => {
       this.updateScanner();
     }, 500)
+  }
+
+  fileChange(event): void {
+    if (event.target.files[0]) {
+      this.img = new Image();
+      this.img.onload = () => {
+        this.bedCtx.drawImage(this.img, 0, 0);
+      }
+      this.img.src = URL.createObjectURL(event.target.files[0]);
+    }
   }
 
   ngAfterViewInit() {

@@ -4,13 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ScannerComponent } from './components/scanner/scanner.component';
 
+import {MdCardModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
     ScannerComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MdCardModule
   ],
   providers: [],
   bootstrap: [

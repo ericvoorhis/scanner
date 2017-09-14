@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ScannerComponent } from './components/scanner/scanner.component';
+import { ScannerService } from './services/scanner.service';
 
 import {MdCardModule} from '@angular/material';
 
@@ -15,7 +16,7 @@ import {MdCardModule} from '@angular/material';
     BrowserModule,
     MdCardModule
   ],
-  providers: [],
+  providers: [ScannerService],
   bootstrap: [
     AppComponent,
     ScannerComponent

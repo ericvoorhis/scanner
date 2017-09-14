@@ -22,4 +22,15 @@ export class ScannerComponent implements AfterViewInit {
     }
   }
 
+  scannerIsPaused() {
+    return this.scannerService.isPaused();
+  }
+
+  onPlayPauseClick() {
+    if (this.scannerService.isPaused()) {
+      this.scannerService.resume();
+    } else {
+      this.scannerService.pause();
+    }
+  }
 }

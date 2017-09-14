@@ -19,7 +19,7 @@ export class ScannerService {
     this.bedCtx.fillStyle = 'rgba(255, 255, 255, 0.3)';
 
     if (!this.paused) {
-      if (this.n * 10 > this.bedCanvas.width) {
+      if (this.n > this.bedCanvas.width) {
         this.n = 0;
       }
 
@@ -32,23 +32,23 @@ export class ScannerService {
       // Right around here copy bed canvas section to output canvas
       this.outputCtx.drawImage(
         this.bedCtx.canvas,
-        10 * this.n, // the left X position to start clipping
+        this.n, // the left X position to start clipping
         0, // the top Y position to start clipping
         10, // clip this width of pixels from the source
         this.bedCanvas.height, // clip this height of pixels from the source
-        10 * this.n, // the left X canvas position to start drawing the clipped sub-image
+        this.n, // the left X canvas position to start drawing the clipped sub-image
         0, // the top Y canvas position to start drawing the clipped sub-image
         10, // scale sW to dW and draw a dW wide sub-image on the canvas
         this.outputCanvas.height  // scale sH to dH and draw a dH high sub-image on the canvas
       );
 
-      this.bedCtx.fillRect(10 * this.n, 0, 10, this.bedCanvas.height);
-      this.n++;
+      this.bedCtx.fillRect(this.n, 0, 10, this.bedCanvas.height);
+      this.n = this.n + 2;
     }
 
     setTimeout(() => {
       this.updateScanner();
-    }, 500)
+    }, 100)
   }
 
   setBedCanvas(canvas: HTMLCanvasElement) {
@@ -64,6 +64,18 @@ export class ScannerService {
   placeImage(img: HTMLImageElement) {
     this.img = img;
     this.updateScanner();
+  }
+
+  isPaused() {
+      return this.paused;
+  }
+
+  pause() {
+    this.paused = true;
+  }
+
+  resume() {
+    this.paused = false;
   }
 
 }

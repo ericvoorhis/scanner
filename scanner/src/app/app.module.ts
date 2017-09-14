@@ -6,7 +6,10 @@ import { ScannerComponent } from './components/scanner/scanner.component';
 import { ImageUploadComponent } from './components/imageupload/image-upload.component';
 import { ScannerService } from './services/scanner.service';
 
-import {MdCardModule} from '@angular/material';
+import { MaterialModule } from '@angular/material';
+// import {MdCardModule, MdListModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import {MdCardModule} from '@angular/material';
   ],
   imports: [
     BrowserModule,
-    MdCardModule
+    MaterialModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule
   ],
   providers: [ScannerService],
   bootstrap: [

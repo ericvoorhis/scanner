@@ -1,1 +1,8 @@
-<input type="file" (change)="fileChange($event)" placeholder="Upload image" accept=".png,.jpg">
+<md-list>
+  <md-list-item>
+    <label md-mini-fab md-list-avatar>
+      <button (click)="onClick($event)" md-raised-button>Upload image</button>
+      <input #file type="file" (change)="fileChange($event)" placeholder="Upload image" accept=".png,.jpg" hidden>
+    </label>
+  </md-list-item>
+</md-list>

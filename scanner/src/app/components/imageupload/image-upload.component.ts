@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ScannerService } from '../../services/scanner.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { ScannerService } from '../../services/scanner.service';
   styleUrls: ['./image-upload.component.css']
 })
 export class ImageUploadComponent {
+  @ViewChild('file') fileInput;
+
   constructor(private scannerService: ScannerService) { }
 
   private img: HTMLImageElement;
@@ -19,6 +21,10 @@ export class ImageUploadComponent {
       }
       this.img.src = URL.createObjectURL(event.target.files[0]);
     }
+  }
+
+  onClick(event): void {
+    this.fileInput.nativeElement.click();
   }
 
 }

@@ -48,7 +48,7 @@ export class ScannerService {
     this.outputCtx = this.outputCanvas.getContext('2d');
   }
 
-  setImage(img: HTMLImageElement) {
+  placeImage(img: HTMLImageElement) {
     this.img = img;
     this.updateScanner();
   }

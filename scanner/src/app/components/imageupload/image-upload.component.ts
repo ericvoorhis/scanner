@@ -16,7 +16,7 @@ export class ImageUploadComponent {
     if (event.target.files[0]) {
       this.img = new Image();
       this.img.onload = () => {
-        this.scannerService.setImage(this.img);
+        this.scannerService.placeImage(this.img);
       }
       this.img.src = URL.createObjectURL(event.target.files[0]);
       // Also update input caption to include file name

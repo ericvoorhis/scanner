@@ -7,7 +7,7 @@ import { ScannerService } from '../../services/scanner.service';
   styleUrls: ['./image-upload.component.css']
 })
 export class ImageUploadComponent {
-  @ViewChild('file') fileInput;
+  @ViewChild('file') fileInput
   private img: HTMLImageElement;
 
   constructor(private scannerService: ScannerService) { }

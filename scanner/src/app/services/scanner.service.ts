@@ -9,6 +9,8 @@ export class ScannerService {
   private outputCtx: CanvasRenderingContext2D;
 
   private n: number = 0;
+  private dx: number = 0;
+  private dy: number = 0;
 
   private paused: boolean = false;
   private img: HTMLImageElement;
@@ -26,7 +28,7 @@ export class ScannerService {
       this.bedCtx.clearRect(0, 0, this.bedCanvas.width, this.bedCanvas.height);
 
       if (this.img) {
-        this.bedCtx.drawImage(this.img, 0, 0);
+        this.bedCtx.drawImage(this.img, this.dx, this.dy);
       }
 
       // Right around here copy bed canvas section to output canvas
@@ -49,6 +51,11 @@ export class ScannerService {
     setTimeout(() => {
       this.updateScanner();
     }, 100)
+  }
+
+  moveImage(dx: number, dy: number) {
+    this.dx += dx;
+    this.dy += dy;
   }
 
   setBedCanvas(canvas: HTMLCanvasElement) {

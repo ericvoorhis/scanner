@@ -1,8 +1,4 @@
-<md-list>
-  <md-list-item>
-    <label md-mini-fab md-list-avatar>
-      <button (click)="onClick($event)" md-raised-button>Place image</button>
-      <input #file type="file" (change)="fileChange($event)" placeholder="Upload image" accept=".png,.jpg" hidden>
-    </label>
-  </md-list-item>
-</md-list>
+<button (click)="onClick($event)" md-fab>
+  <md-icon class="md-24" aria-label="File Upload Button">file_upload</md-icon>
+</button>
+<input #file type="file" (change)="fileChange($event)" placeholder="Upload image" accept=".png,.jpg" hidden>

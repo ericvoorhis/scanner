@@ -18,7 +18,7 @@ export class ScannerComponent implements AfterViewInit {
     }
 
     if (this.scannerOutput.nativeElement) {
-      this.scannerService.setOutputCanvas(this.scannerBed.nativeElement);
+      this.scannerService.setOutputCanvas(this.scannerOutput.nativeElement);
     }
   }
 

@@ -29,6 +29,19 @@ export class ScannerService {
         this.bedCtx.drawImage(this.img, 0, 0);
       }
 
+      // Right around here copy bed canvas section to output canvas
+      this.outputCtx.drawImage(
+        this.bedCtx.canvas,
+        10 * this.n, // the left X position to start clipping
+        0, // the top Y position to start clipping
+        10, // clip this width of pixels from the source
+        this.bedCanvas.height, // clip this height of pixels from the source
+        10 * this.n, // the left X canvas position to start drawing the clipped sub-image
+        0, // the top Y canvas position to start drawing the clipped sub-image
+        10, // scale sW to dW and draw a dW wide sub-image on the canvas
+        this.outputCanvas.height  // scale sH to dH and draw a dH high sub-image on the canvas
+      );
+
       this.bedCtx.fillRect(10 * this.n, 0, 10, this.bedCanvas.height);
       this.n++;
     }

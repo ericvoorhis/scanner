@@ -16,7 +16,7 @@ export class ScannerService {
   constructor() { }
 
   updateScanner(): void {
-    this.bedCtx.fillStyle = 'rgba(0, 0, 200, 0.3)';
+    this.bedCtx.fillStyle = 'rgba(255, 255, 255, 0.3)';
 
     if (!this.paused) {
       if (this.n * 10 > this.bedCanvas.width) {

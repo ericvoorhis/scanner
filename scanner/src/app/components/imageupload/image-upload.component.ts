@@ -8,10 +8,9 @@ import { ScannerService } from '../../services/scanner.service';
 })
 export class ImageUploadComponent {
   @ViewChild('file') fileInput;
+  private img: HTMLImageElement;
 
   constructor(private scannerService: ScannerService) { }
-
-  private img: HTMLImageElement;
 
   fileChange(event): void {
     if (event.target.files[0]) {
@@ -20,6 +19,7 @@ export class ImageUploadComponent {
         this.scannerService.setImage(this.img);
       }
       this.img.src = URL.createObjectURL(event.target.files[0]);
+      // Also update input caption to include file name
     }
   }
 

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ScannerComponent } from './components/scanner/scanner.component';
+import { ImageUploadComponent } from './components/imageupload/image-upload.component';
 import { ScannerService } from './services/scanner.service';
 
 import {MdCardModule} from '@angular/material';
@@ -10,6 +11,7 @@ import {MdCardModule} from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
+    ImageUploadComponent,
     ScannerComponent
   ],
   imports: [
@@ -19,6 +21,7 @@ import {MdCardModule} from '@angular/material';
   providers: [ScannerService],
   bootstrap: [
     AppComponent,
+    ImageUploadComponent,
     ScannerComponent
   ]
 })
